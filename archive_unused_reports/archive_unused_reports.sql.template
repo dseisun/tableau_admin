@@ -1,0 +1,50 @@
+SELECT workbook, repository_url, wb_created_at, project
+, wb_owner || '@{domain}' as owner_email, wb_owner, url_namespace
+, MAX(event_created_at) as most_recent_view
+FROM (
+  SELECT
+    proj.name as project,
+    wb.created_at as wb_created_at,
+    he.created_at as event_created_at,
+    hwb.name as workbook,
+    wb.repository_url,
+    now() at time zone 'utc' - he.created_at as time_since_action,
+    sites.url_namespace,
+    su.name as wb_owner
+  FROM historical_events he
+  LEFT JOIN historical_event_types het
+   ON het.type_id = he.historical_event_type_id
+  LEFT JOIN hist_users as hist_users_a
+   ON hist_users_a.id = he.hist_actor_user_id
+  LEFT JOIN hist_users as hist_users_t
+   ON hist_users_t.id = he.hist_target_user_id
+  LEFT JOIN hist_workbooks hwb
+   ON hwb.id = he.hist_workbook_id
+  LEFT JOIN hist_views hv
+   ON hv.id = he.hist_view_id
+  LEFT JOIN hist_sites s
+   ON s.id = he.hist_actor_site_id
+  LEFT JOIN sites
+   ON sites.id = s.site_id
+  LEFT JOIN (
+    SELECT max(workbook_id) as cur_id, name
+    FROM hist_workbooks
+    GROUP BY name
+  ) cur_wb
+    ON cur_wb.name = hwb.name
+  LEFT JOIN workbooks wb
+   ON wb.id = cur_wb.cur_id
+  LEFT JOIN projects proj
+   ON proj.id = wb.project_id
+  LEFT JOIN users u
+   ON u.id =  wb.owner_id
+  LEFT JOIN system_users su
+   ON su.id = u.system_user_id
+  WHERE het.name = 'Access View'
+  AND wb.name is not null
+  AND wb.created_at < (current_date - {archive_window})
+) x
+GROUP BY x.workbook, x.repository_url, x.wb_created_at,x.project, x.wb_owner
+, x.url_namespace
+-- Haven't been used in last {archive_window} days
+HAVING MAX(event_created_at) < (current_date - {archive_window})

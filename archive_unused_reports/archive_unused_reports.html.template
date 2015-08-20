@@ -1,0 +1,17 @@
+ Hi folks,<br>
+ <br>
+ In an effort to keep our Tableau Server lean and mean, we are starting to
+ archive Tableau reports that haven't logged at least 1 page view in the last
+ {archive_window} days.
+ <br>
+ You have several reports that will be impacted.<br>
+ Your reports:<br>
+ <i><b><ul><li>
+ {workbook_list}
+ </li></ul></b></i>
+ <br>
+ will be taken off the server and archived sometime in the next week.<br>
+ It'll be easy to restore the reports, and having them off the server should
+ reduce the load/confusion on the server.<br>
+ <br>
+ Please contact {contact} if you have any urgent questions.

@@ -1,0 +1,16 @@
+<body>Your extract for workbook: <b>{workbook_title}</b>
+on Tableau Server has failed at: {fail_time} <br>
+<br>
+With error message: <br>
+<table border="1" style="background-color: #ffff99">
+<tr><td>
+<i>{error_message}</i>
+</td></tr>
+</table>
+<br>
+<br>
+Please see if you can either fix the workbook or if you're no longer using it,
+ delete it.
+<br><br>
+If you can't figure out what's going wrong with your extract feel free to
+contact to either {contact} or {contact2} for help troubleshooting </body>

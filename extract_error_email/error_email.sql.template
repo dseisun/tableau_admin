@@ -1,0 +1,18 @@
+SELECT
+  title,
+  completed_at at time zone 'utc' AS time_since_failure_pst,
+  COALESCE(su.name, '{default_owner}') AS wb_owner,
+  notes
+FROM background_jobs bj
+LEFT JOIN workbooks wb
+  ON wb.name = bj.title
+ AND bj.site_id = wb.site_id
+LEFT JOIN users u
+  ON u.id =  wb.owner_id
+LEFT JOIN system_users su
+  ON su.id = u.system_user_id
+WHERE job_name IN ('Refresh Extracts', 'Increment Extracts')
+  AND finish_code = 1
+  AND progress = 100
+  AND NOW() at time zone 'utc' < completed_at + interval '{hour} hour'
+ORDER BY completed_at DESC

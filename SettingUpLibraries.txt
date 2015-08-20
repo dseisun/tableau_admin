@@ -1,0 +1,4 @@
+To make many of the scripts work, you'll need to add the 'libraries' directory to your python path
+To do this, go to your ~/.local_bash file and add:
+export PYTHONPATH=/Users/<username>/workspace/data-reporting/src/python/libraries/
+or whatever path makes sense for where you've cloned your repo
