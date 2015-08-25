@@ -8,6 +8,8 @@ This is a collection of scripts for features missing from the Tableau Admin suit
 - exporting workbooks and datasources in XML without attached data
 - Subscription framework that allows for more flexible report subscriptions
 
+For all of this, a huge thanks to Ryan Mason for going through my crappy code, improving it everywhere, and writing 95% of the documentation
+
 ## Initial setup
 
 Access our helper functions.
