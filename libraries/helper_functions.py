@@ -3,6 +3,8 @@ import email
 import settings
 import smtplib
 import distutils
+import sys
+import urllib2
 
 def mkdir_if_not_exists(dir):
   if not(os.path.isdir(dir)):
@@ -55,12 +57,28 @@ def tableau_login(user, password, site='default'):
   else:
     raise RuntimeError('tabcmd not found')
 
-def tab_url_to_filename(url):
-  return url \
-  .replace(' ', '_') \
-  .replace('/', '_')
-
 def load_template(filename):
   with open(filename, "r") as f:
     template = f.read()
   return template
+
+
+def url_to_file_name(url, file_type='png'):
+  return \
+  urllib2.unquote(url) \
+    .replace(' ', '') \
+    .replace('/', '_') \
+    .replace('=', '_') \
+    .replace('?', '-') \
+    .replace('&', '-') + '.' + file_type
+  
+
+def path_concat(first_path, second_path):
+  if sys.platform == 'win32':
+    if first_path.endswith('\\'):
+      first_path = first_path[:-1]    
+    return first_path + '\\' + second_path
+  else:
+    if first_path.endswith('/'):
+      first_path = first_path[:-1]
+    return first_path + '/' + second_path

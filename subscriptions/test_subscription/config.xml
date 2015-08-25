@@ -1,0 +1,16 @@
+<root>
+	<!--This is the .csv file containing our email address and filter options-->
+	<csvfile>/home/dseisun/tableau_admin/subscriptions/test_subscription/List.csv</csvfile>
+	<save_path>/home/dseisun/tableau_admin/subscriptions/test_subscription</save_path>
+	<archive_path>/home/dseisun/tableau_admin/subscriptions/test_subscription/Archive</archive_path>
+	<static_attach>/home/dseisun/tableau_admin/subscriptions/test_subscription/static_attachment.pdf</static_attach>
+	<!-- This is the tableau site we're downloading from. Currently doesn't support cross site subscriptions -->
+	<tableau_site>default</tableau_site>
+	<message>
+		<!--This populates our from field. NOTE: Depending on your SMTP permissions this may be overwritten to your user name.-->
+		<from>dseisun@twitter.com</from>
+		<!--Our subject and body of the email-->
+		<subject>My test subscription</subject>
+		<body>Check out these sweet reports!</body>
+	</message>
+</root>

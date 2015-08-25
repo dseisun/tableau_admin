@@ -10,7 +10,7 @@ import os
 # Local libraries
 ################################################################################
 from helper_functions import list_dict, sendEmail, load_template,\
- tabcmd_installed, tab_url_to_filename, tableau_login
+ tabcmd_installed, url_to_file_name, tableau_login
 import settings
 
 ################################################################################
@@ -20,8 +20,8 @@ conn = psycopg2.connect(
   host     = settings.TABLEAU_HOST,
   port     = 8060,
   database = "workgroup",
-  user     = settings.TABLEAU_USER,
-  password = settings.TABLEAU_PASSWORD)
+  user     = settings.TABLEAU_POSTGRES_USER,
+  password = settings.TABLEAU_POSTGRES_PASSWORD)
 
 ################################################################################
 # Query or email template
@@ -68,8 +68,7 @@ if not tabcmd_installed():
 for report in sorted(records, key = lambda rec: rec['url_namespace']):
   tableau_login(settings.TABADMIN_USER, settings.TABADMIN_PASSWORD,
     report['url_namespace'])
-  report_uri = (settings.ARCHIVE_LOCATION +
-    tab_url_to_filename(report['workbook']) + '.twb')
+  path_concat(settings.ARCHIVE_LOCATION, url_to_file_name(report['workbook'],'twb'))
 
   get_cmd = [
       'tabcmd', 'get', '/workbooks/{0}.twb'.format(report['repository_url']),

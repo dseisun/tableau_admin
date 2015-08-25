@@ -17,8 +17,8 @@ conn = psycopg2.connect(
   host     = settings.TABLEAU_HOST,
   port     = 8060,
   database = "workgroup",
-  user     = settings.TABLEAU_USER,
-  password = settings.TABLEAU_PASSWORD)
+  user     = settings.TABLEAU_POSTGRES_USER,
+  password = settings.TABLEAU_POSTGRES_PASSWORD)
 
 curs = conn.cursor()
 

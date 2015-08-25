@@ -1,0 +1,5 @@
+Email,URL,Param1,Value1
+recipient_email@gmail.com,Regional/Obesity,Region,West
+recipient_email@gmail.com,Regional/Obesity,Region,East
+recipient2_email@gmail.com,Regional/College,Academic Year,{CURRENT_YEAR}
+recipient2_email@gmail.com,Regional/College,Academic Year,{PREVIOUS_YEAR}

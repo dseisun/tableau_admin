@@ -1,4 +1,3 @@
-
 # Tableau Admin Scripts
 
 This is a collection of scripts for features missing from the Tableau Admin suite of tools. It's focused on 
@@ -7,6 +6,7 @@ This is a collection of scripts for features missing from the Tableau Admin suit
 - emailing extract owners of failed extracts
 - parsing Tableau Desktop logs for queries
 - exporting workbooks and datasources in XML without attached data
+- Subscription framework that allows for more flexible report subscriptions
 
 ## Initial setup
 
@@ -26,13 +26,17 @@ http://docs.python-guide.org/en/latest/dev/virtualenvs/
 
 ### Postgres
 
-Tableau Server is backed by a [Postgres](http://www.postgresql.org/) server. In order to be able to get information about the state of your server, the library requires that you have Postgres drivers installed.
+Tableau Server is backed by a [Postgres](http://www.postgresql.org/) server. In order to be able to get information about the state of your server, the library requires that you have Postgres drivers installed. You'll also need to have a user that can access the system tables. Read this thread for an idea of how to go about this: http://community.tableau.com/message/340714#340714
 
-An easy way to install Postgres on OS X is with [Homebrew](http://brew.sh/), `brew install postgres`
+Python Postgres Driver Downloads:
+	- Windows: http://www.stickpeople.com/projects/python/win-psycopg/
+	- OS X: [Homebrew](http://brew.sh/), `brew install postgres`
+	- Ubuntu: sudo apt-get install python-psycopg2
 
 ### tabcmd
 
 If you'd like to take actions on the server, you'll need a local copy of `tabcmd` to interact with the Tableau Server. 
+To get tabcmd for mac/linux it's now pretty trivial on 9.0. Take a look at this post: http://community.tableau.com/message/343118#343118
 
 ### Catching emails in development
 
@@ -69,6 +73,17 @@ Find queries in Tableau Desktop logs.
 Export only the XML from Tableau Workbooks and data sources, and tries to insert the datasources into a database. Currently set up for Vertica. Needs to be abstracted for more export options
 
         $ python tableau_export_datascources.py
+
+# subscriptions
+
+This is a full framework for emailing reports to users. Some of the features:
+	- Email multiple users
+	- Each email may contain multiple dashboards from multiple different workbooks
+	- (Slightly) intelligent caching. If a report is going to many users, it only pulls it down once.
+	- Filtered subscriptions. This solves for: User A is only supposed to see data for California, and User B data for Wisconsin
+	- Dynamic Filters (Sort of). Ex: Report can always be filtered to show only last saturday's data.
+
+This is complex enough that it has its own readme in the subscriptions directory (readme.txt)
 
 ##queries
 
