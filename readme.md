@@ -80,6 +80,7 @@ Export only the XML from Tableau Workbooks and data sources, and tries to insert
 # subscriptions
 
 This is a full framework for emailing reports to users. Some of the features:
+
 	- Email multiple users
 	- Each email may contain multiple dashboards from multiple different workbooks
 	- (Slightly) intelligent caching. If a report is going to many users, it only pulls it down once.
