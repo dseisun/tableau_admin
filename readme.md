@@ -31,6 +31,7 @@ http://docs.python-guide.org/en/latest/dev/virtualenvs/
 Tableau Server is backed by a [Postgres](http://www.postgresql.org/) server. In order to be able to get information about the state of your server, the library requires that you have Postgres drivers installed. You'll also need to have a user that can access the system tables. Read this thread for an idea of how to go about this: http://community.tableau.com/message/340714#340714
 
 Python Postgres Driver Downloads:
+
 	- Windows: http://www.stickpeople.com/projects/python/win-psycopg/
 	- OS X: [Homebrew](http://brew.sh/), `brew install postgres`
 	- Ubuntu: sudo apt-get install python-psycopg2
