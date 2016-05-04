@@ -43,13 +43,13 @@ def tableau_login(user, password, site='default'):
   if tabcmd_installed():
     if site in ['', None, 'default']:
       subprocess.call(['tabcmd', 'login',
-        '-s', settings.TABLEAU_HTTP + settings.TABLEAU_HOST,
+        '-s', settings.TABLEAU_HOST,
         '-u', user,
         '-p', password,
         '--no-prompt'])
     else:
       subprocess.call(['tabcmd', 'login',
-        '-s', settings.TABLEAU_HTTP + settings.TABLEAU_HOST,
+        '-s', settings.TABLEAU_HOST,
         '-t', site,
         '-u', user,
         '-p', password,
