@@ -65,14 +65,14 @@ sub = Subscription(csvpath, take_top)
 ################################################################
 if not(args.skip_tabcmd):
 	if site == 'default':
-		subprocess.call([tabcmd, 'login', '-s', server, '-u', username, '-p', password, '--no-prompt'])
+		subprocess.call([tabcmd, 'login', '-s', server, '-u', username, '-p', password, '--no-prompt', '--no-certcheck'])
 	else:
-		subprocess.call([tabcmd, 'login', '-s', server,'-t', site, '-u', username, '-p', password, '--no-prompt'])
+		subprocess.call([tabcmd, 'login', '-s', server,'-t', site, '-u', username, '-p', password, '--no-prompt', '--no-certcheck'])
 
 	for row in sub.sub_rows:
 		absolute_save_path = path_concat(save_path, url_to_file_name(row.url()))
 		if not(os.path.isfile(absolute_save_path)):
-			subprocess.call([tabcmd, 'export', row.url(), '-f', absolute_save_path, '--png', '--pagesize', 'unspecified', '--timeout', '300'])
+			subprocess.call([tabcmd, 'export', row.url(), '-f', absolute_save_path, '--png', '--pagesize', 'unspecified', '--width', '1200', '--height', '800', '--timeout', '300', '--no-certcheck'])
 		row.saved_path = absolute_save_path		
 # ################################################################
 
