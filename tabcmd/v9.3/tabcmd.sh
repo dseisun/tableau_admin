@@ -1,2 +1,3 @@
 #!/bin/bash
-java -Xmx64m -Xss2048k -Djsse.enableSNIExtension=false -Dpid=$$ -Dlog.file=tabcmd.log -Dsession.file=tabcmd-session.xml -Din.progress.dir='./' -Dconsole.codepage=$LANG -Dconsole.cols=$COLUMNS -cp "lib/*" com.tableausoftware.tabcmd.Tabcmd "$@"
+TABCMD_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+java -Xmx64m -Xss2048k -Djsse.enableSNIExtension=false -Dpid=$$ -Dlog.file="$TABCMD_HOME/tabcmd.log" -Dsession.file="$TABCMD_HOME/tabcmd-session.xml" -Din.progress.dir="$TABCMD_HOME" -Dconsole.codepage=$LANG -Dconsole.cols=$COLUMNS -cp "$TABCMD_HOME/lib/*" com.tableausoftware.tabcmd.Tabcmd "$@"
