@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ActivationSpecificationRecord xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Header>
+<Version>1</Version>
+<Id>169</Id>
+<PublisherId>4073728</PublisherId>
+</Header>
+<ConfigData>
+<ClientConfig>
+<Id>1</Id>
+<Revision>1212466702754</Revision>
+<RevisionType>ASR</RevisionType>
+<Data>71E463562A425B994E9836FF7A616EE433C615B667DDE99AD872091C8744730773538BB23B7A644379C302B9876A9F7860A8B18433E0BBA2748E2F595864BB35055B4D362B260302DE9FB3AAD70BCC2F23A6C4D7FABF836193EA0F2ECB0C17B568A512A45994693CD29B03EA2C1C5FED963811696F6AEF7B57500910497C9163E2A7C60F10DB1F7FC21D94E6BCBF5468BE23957D48E8D7909F815822B39D27810A6B75A77A9884712C2A3966B1E2BCE6348E674D2A2CD48CF2173BFA85530CB4EEBEBE741B07A137CC03B5A178D9A4023771A3C05C7121CC1F</Data>
+</ClientConfig>
+</ConfigData>
+<DataDictionary>
+<Entries>
+<Entry>
+<Key>PUBLISHER_DEFINED_CRITERION</Key>
+<Value>LOCAL_ONCE</Value>
+</Entry>
+<Entry>
+<Key>PUBLISHER_DEFINED_DURATION</Key>
+<Value>1209600</Value>
+</Entry>
+<Entry>
+<Key>PUBLISHER_TRIAL_RESET</Key>
+<Value>1</Value>
+</Entry>
+</Entries>
+</DataDictionary>
+<FulfillmentRecord>
+<FulfillmentRecordHeader>
+<VersionNumber>1</VersionNumber>
+</FulfillmentRecordHeader>
+<FulfillmentRecordData>
+<FulfillmentId>LOCAL_TRIAL_FID_169</FulfillmentId>
+<FulfillmentDictionary>
+<Entries>
+<Entry>
+<Key>ProductId</Key>
+<Value>NAME=Tableau Server 1;VERSION=4.0</Value>
+</Entry>
+<Entry>
+<Key>features</Key>
+<Value>
+
+INCREMENT TableauServerCapacity tableau 2017.1015 permanent 1 \
+	VENDOR_STRING=EntitlementID=;INTERACTOR=5;VIEWER=5;FulfillmentID=;ActivationID=;OEMNAME=;CORES=;GUEST=;GBRAND= \
+	ISSUER="Tableau Software" ISSUED=15-oct-2014 START=14-oct-2014 \
+	TS_OK SIGN="1AFA EDC1 7793 BF53 6BA8 091D 9E04 B3B2 33DC 44C5 \
+	96A7 B5C4 B2EF 517D 7480 1AEC 72C3 277E 21C4 83BF CD3C C793 \
+	0CEA 962E BD81 A3F2 0925 75C5 AB84 ECD5"
+INCREMENT TableauServer tableau 2017.1015 permanent 1 \
+	VENDOR_STRING=EntitlementID=;EDITION=Standard;CAP=REG:STANDARD,WARN:14;DC_STD=default;DC_CAP=;MAX_USERS=25;TRIALVER=Devteam;FulfillmentID=;ActivationID=;OEMNAME=;MAP_STD=default;MAP_CAP=;OFFLINE= \
+	ISSUER="Tableau Software" ISSUED=15-oct-2014 START=14-oct-2014 \
+	TS_OK SIGN="06CF 7DD5 36A0 C5D2 A41F A0B0 0BCD 88E4 357D 05A2 \
+	44FA F18A BCDA FED8 2CCC 1E83 8C1D 4985 3C17 80D7 7278 E86F \
+	696D 6F3C 0F16 1E94 80C7 4933 9CF5 9D82"
+</Value>
+</Entry>
+<Entry>
+<Key>availAct</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>servOrLocal</Key>
+<Value>2</Value>
+</Entry>
+<Entry>
+<Key>description</Key>
+<Value/>
+</Entry>
+<Entry>
+<Key>serverHostID</Key>
+<Value>FLEXID=6-a6300155</Value>
+</Entry>
+<Entry>
+<Key>name</Key>
+<Value>Tableau Server Devteam Trial NA v2</Value>
+</Entry>
+<Entry>
+<Key>expiry</Key>
+<Value>permanent</Value>
+</Entry>
+<Entry>
+<Key>fulfillmentType</Key>
+<Value>1</Value>
+</Entry>
+</Entries>
+</FulfillmentDictionary>
+</FulfillmentRecordData>
+</FulfillmentRecord>
+<Signature>10A0C34362E6BBA7BCFD0CB203301CC90F98DC3A459C5BB991D3DEEC83BE17C9C96398B08A23E389EAF5B7F7A0099DC9F23A321DFAC8DE4BCB39979E</Signature>
+</ActivationSpecificationRecord>

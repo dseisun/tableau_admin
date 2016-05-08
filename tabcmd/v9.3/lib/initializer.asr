@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ActivationSpecificationRecord xmlns="http://www.macrovision.com/fnp/2004/11/activation">
+<Header>
+<Version>1</Version>
+<Id>18</Id>
+<PublisherId>4073728</PublisherId>
+</Header>
+<ConfigData>
+<ClientConfig>
+<Id>1</Id>
+<Revision>1217636280562</Revision>
+<RevisionType>ASR</RevisionType>
+<Data>8F47F6BE563486710EF461B39A8478418B8EA66069906172719DB1AD5E8F0288D6B99ED920D18D6A04D8B93B2F82E83F6C3E958B35D87178E98F3F34941367083726C6F722A2BD949551D58D1B1D0F6AC7691B7EFF5EDA91CB6D1BB366E0D3E8C399EB3B044BCD6F5F50A318A238F87D7653599F3E471982E67F2BD52B19F03AD8648B3D7A7D4DF51365AEC02D857A5E8499FD744526DCD5681009A216BD9DDDD5261A0E075507C418E2E16733FA4C0C722D8BD72CDA3DC38866AEC084899665D9E2F7EA20879637CF6CAF524E5D657EFA5F0B60647836A8B8</Data>
+</ClientConfig>
+</ConfigData>
+<DataDictionary>
+<Entries>
+<Entry>
+<Key>PUBLISHER_DEFINED_CRITERION</Key>
+<Value>LOCAL_ONCE</Value>
+</Entry>
+<Entry>
+<Key>PUBLISHER_DEFINED_DURATION</Key>
+<Value>86400</Value>
+</Entry>
+</Entries>
+</DataDictionary>
+<FulfillmentRecord>
+<FulfillmentRecordHeader>
+<VersionNumber>1</VersionNumber>
+</FulfillmentRecordHeader>
+<FulfillmentRecordData>
+<FulfillmentId>LOCAL_TRIAL_FID_18</FulfillmentId>
+<FulfillmentDictionary>
+<Entries>
+<Entry>
+<Key>ProductId</Key>
+<Value>NAME=TableauInitializer;VERSION=1.0</Value>
+</Entry>
+<Entry>
+<Key>features</Key>
+<Value>
+
+INCREMENT TableauInitializer tableau 1.0 permanent 1 ISSUER="Tableau \
+	Software" ISSUED=12-aug-2008 START=11-aug-2008 ONE_TS_OK \
+	SIGN="101F 157E DD09 DE23 A590 476D 2430 2808 27DC E3D2 49D7 \
+	FFAC 4E8B EF09 170F 0093 57A9 6761 B476 1E66 17BD FDF1 1391 \
+	5620 B92E 4B59 A9F1 9041 CE80 6ACF"
+</Value>
+</Entry>
+<Entry>
+<Key>availAct</Key>
+<Value>1</Value>
+</Entry>
+<Entry>
+<Key>servOrLocal</Key>
+<Value>2</Value>
+</Entry>
+<Entry>
+<Key>description</Key>
+<Value />
+</Entry>
+<Entry>
+<Key>serverHostID</Key>
+<Value>FLEXID=6-a6300155</Value>
+</Entry>
+<Entry>
+<Key>name</Key>
+<Value>Tableau Initializer</Value>
+</Entry>
+<Entry>
+<Key>expiry</Key>
+<Value>permanent</Value>
+</Entry>
+<Entry>
+<Key>fulfillmentType</Key>
+<Value>1</Value>
+</Entry>
+</Entries>
+</FulfillmentDictionary>
+</FulfillmentRecordData>
+</FulfillmentRecord>
+<Signature>03EA563A4D88A0E5E4955CBD4FDBFD8038A26FCB333FA846FDC5090FAACC19FC680FACE2EBC3D5E33CB0C06F34069D75F91A5325F9D8284ED623E83B</Signature>
+</ActivationSpecificationRecord>
