@@ -1,4 +1,3 @@
-#TODO 
 import sys
 import os
 import urllib2
@@ -13,10 +12,12 @@ import urllib2
 import Cookie
 import xml.etree.ElementTree as ET
 from datetime import datetime
+sys.path.append('../libraries/')
 from Subscription import Subscription
 from TabEmail import TabEmail
 from settings import TABLEAU_HOST, TABLEAU_SUBSCRIPTION_USER, TABLEAU_SUBSCRIPTION_PASSWORD, SMTP_HOST, SMTP_PORT, SMTP_SSL, SMTP_USERNAME, SMTP_PASSWORD, TABCMD_PATH
 from helper_functions import url_to_file_name, path_concat
+
 
 parser = argparse.ArgumentParser(description='Daniel Seisun Subscription Script')
 parser.add_argument('--config', action="store", dest="config",required=True, help="Path to the config XML file")
