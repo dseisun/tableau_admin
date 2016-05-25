@@ -25,6 +25,7 @@ parser.add_argument('--to_override', action="store", dest="to_override", help="O
 parser.add_argument('--file_override', action="store", dest="file_override", help="Override the filename parameter (Used to potentially point to a custom file). Must be used in conjuction with --skip_tabcmd")
 parser.add_argument('--skip_tabcmd',  action='store_true', dest='skip_tabcmd', help="Override the saved_filename of the file")
 parser.add_argument('--take_top', action="store", dest="take_top",type=int, help="Takes the top X rows of your list file")
+parser.add_argument('--preprocess_script', action="store", dest="preprocess_script", help="Python script for preprocessing. Intended for dynamically creating distribution lists")
 args = parser.parse_args()
 
 config_xml = ET.parse(open(args.config, 'r'))
@@ -54,6 +55,8 @@ site = 'default'
 if len(config_xml.findall('tableau_site')) == 1:
 	site = config_xml.find('tableau_site').text
 
+if args.preprocess_script:
+	subprocess.call(['python', args.preprocess_script])
 
 if args.take_top:
 	take_top = args.take_top
