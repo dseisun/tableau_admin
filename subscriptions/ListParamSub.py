@@ -14,6 +14,10 @@ def current_day():
 def current_year():
 	return datetime.date.today().strftime("%Y")
 
+def previous_eom():
+	today = datetime.date.today()
+	return today - datetime.timedelta(days=today.day)
+
 def previous_year():
 	return str(int(datetime.date.today().strftime("%Y")) - 1)
 
@@ -23,6 +27,7 @@ def parameter_parsing(line):
 	line = map(lambda cell: cell.replace('{CURRENT_DAY}', current_day()), line)
 	line = map(lambda cell: cell.replace('{CURRENT_YEAR}', current_year()), line)
 	line = map(lambda cell: cell.replace('{PREVIOUS_YEAR}', previous_year()), line)
+	line = map(lambda cell: cell.replace('{PREVIOUS_EOM}', previous_eom()), line)
 	return line
 
 
