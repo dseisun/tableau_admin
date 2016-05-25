@@ -16,7 +16,7 @@ def current_year():
 
 def previous_eom():
 	today = datetime.date.today()
-	return today - datetime.timedelta(days=today.day)
+	return (today - datetime.timedelta(days=today.day)).strftime("%Y-%m-%d")
 
 def previous_year():
 	return str(int(datetime.date.today().strftime("%Y")) - 1)
