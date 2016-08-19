@@ -1,9 +1,13 @@
 from Subscription import Subscription
 from TabEmail import TabEmail
+import sys
+sys.path.append('../libraries/')
 from settings import TABLEAU_HOST, TABLEAU_SUBSCRIPTION_USER, TABLEAU_SUBSCRIPTION_PASSWORD, \
     SMTP_HOST, SMTP_PORT, SMTP_SSL, SMTP_USERNAME, SMTP_PASSWORD, TABCMD_PATH
 from helper_functions import url_to_file_name, path_concat
-import sys
+from random import random
+from time import sleep
+
 import os
 import argparse
 import subprocess
@@ -12,7 +16,7 @@ import email
 import shutil
 import xml.etree.ElementTree as ET
 from datetime import datetime
-sys.path.append('../libraries/')
+
 
 
 parser = argparse.ArgumentParser(description='Daniel Seisun Subscription Script')
@@ -22,6 +26,7 @@ parser.add_argument('--file_override', action="store", dest="file_override", hel
 parser.add_argument('--skip_tabcmd',  action='store_true', dest='skip_tabcmd', help="Override the saved_filename of the file")
 parser.add_argument('--take_top', action="store", dest="take_top",type=int, help="Takes the top X rows of your list file")
 parser.add_argument('--preprocess_script', action="store", dest="preprocess_script", help="Python script for preprocessing. Intended for dynamically creating distribution lists")
+parser.add_argument('--avoid_ratelimits',  action='store_true', dest='avoid_ratelimits', help="Stagger the sending of emails to try to avoid being rate limited by gmail")
 args = parser.parse_args()
 
 config_xml = ET.parse(open(args.config, 'r'))
@@ -105,6 +110,8 @@ for email in sub.unique_emails():
         email_attachments_png=filenames,
         email_attachment_pdf=static_attach)
     smtp_conn.sendmail(message_from, message_to, msg.as_string())
+    if args.avoid_ratelimits:
+        sleep(random()*3)
 ##################################################################
 
 # #Archiving Subscriptions
