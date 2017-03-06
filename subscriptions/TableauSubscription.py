@@ -28,6 +28,7 @@ parser.add_argument('--skip_tabcmd',  action='store_true', dest='skip_tabcmd', h
 parser.add_argument('--take_top', action="store", dest="take_top",type=int, help="Takes the top X rows of your list file")
 parser.add_argument('--preprocess_script', action="store", dest="preprocess_script", help="Python script for preprocessing. Intended for dynamically creating distribution lists")
 parser.add_argument('--avoid_ratelimits',  action='store_true', dest='avoid_ratelimits', help="Stagger the sending of emails to try to avoid being rate limited by gmail")
+parser.add_argument('--skip_email', action='store_true', dest='skip_email', help='Set to skip sending the emails (useful if you just want the files downloaded)')
 args = parser.parse_args()
 
 config_xml = ET.parse(open(args.config, 'r'))
@@ -87,35 +88,36 @@ if not(args.skip_tabcmd):
 
 #Sending Emails
 ################################################################
-if SMTP_SSL:
-    smtp_conn = smtplib.SMTP_SSL(smtp_server, smtp_server_port)
-    smtp_conn.login(SMTP_USERNAME, SMTP_PASSWORD)
-else:
-    smtp_conn = smtplib.SMTP(smtp_server, smtp_server_port)
-
-for email in sub.unique_emails():
-    # Overrides
-    ################################################################
-    if args.file_override:
-        filenames = [args.file_override]
+if not (args.skip_email):
+    if SMTP_SSL:
+        smtp_conn = smtplib.SMTP_SSL(smtp_server, smtp_server_port)
+        smtp_conn.login(SMTP_USERNAME, SMTP_PASSWORD)
     else:
-        filenames = [email_row.saved_path for email_row in filter(lambda sub_row: sub_row.csv_dict['Email'] == email, sub.sub_rows)]
+        smtp_conn = smtplib.SMTP(smtp_server, smtp_server_port)
 
-    if args.to_override:
-        message_to = args.to_override
-    else:
-        message_to = email
-    ################################################################
-    msg = TabEmail(
-        email_to=message_to,
-        email_from=message_from,
-        email_subject=message_subject,
-        email_body=message_body,
-        email_attachments_png=filenames,
-        email_attachment_pdf=static_attach)
-    smtp_conn.sendmail(message_from, message_to, msg.as_string())
-    if args.avoid_ratelimits:
-        sleep(random()*3)
+    for email in sub.unique_emails():
+        # Overrides
+        ################################################################
+        if args.file_override:
+            filenames = [args.file_override]
+        else:
+            filenames = [email_row.saved_path for email_row in filter(lambda sub_row: sub_row.csv_dict['Email'] == email, sub.sub_rows)]
+
+        if args.to_override:
+            message_to = args.to_override
+        else:
+            message_to = email
+        ################################################################
+        msg = TabEmail(
+            email_to=message_to,
+            email_from=message_from,
+            email_subject=message_subject,
+            email_body=message_body,
+            email_attachments_png=filenames,
+            email_attachment_pdf=static_attach)
+        smtp_conn.sendmail(message_from, message_to, msg.as_string())
+        if args.avoid_ratelimits:
+            sleep(random()*3)
 ##################################################################
 
 # #Archiving Subscriptions
