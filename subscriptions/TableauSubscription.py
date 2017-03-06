@@ -21,7 +21,7 @@ from datetime import datetime
 
 
 parser = argparse.ArgumentParser(description='Daniel Seisun Subscription Script')
-parser.add_argument('--config', action="store", dest="config",required=True, help="Path to the config XML file")
+parser.add_argument('--config', action="store", dest="config", required=True, help="Path to the config XML file")
 parser.add_argument('--to_override', action="store", dest="to_override", help="Override the destination of the email")
 parser.add_argument('--file_override', action="store", dest="file_override", help="Override the filename parameter (Used to potentially point to a custom file). Must be used in conjuction with --skip_tabcmd")
 parser.add_argument('--skip_tabcmd',  action='store_true', dest='skip_tabcmd', help="Override the saved_filename of the file")
