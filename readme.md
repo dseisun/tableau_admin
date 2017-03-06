@@ -39,7 +39,7 @@ Python Postgres Driver Downloads:
 ### tabcmd
 
 If you'd like to take actions on the server, you'll need a local copy of `tabcmd` to interact with the Tableau Server. 
-To get tabcmd for mac/linux it's now pretty trivial on 9.0. Take a look at this post: http://community.tableau.com/message/343118#343118
+To get tabcmd for mac/linux it's now pretty trivial on 10.x. You need to grab the `app-tabcmd-latest-jar.jar` file from the `extras/Command Line Utility/` directory and then create a tabcmd.sh script as described here: https://community.tableau.com/message/561152#561152
 
 ### Catching emails in development
 
