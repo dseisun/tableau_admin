@@ -59,7 +59,7 @@ if len(config_xml.findall('tableau_site')) == 1:
     site = config_xml.find('tableau_site').text
 
 if args.preprocess_script:
-    subprocess.call(['python', args.preprocess_script])
+    subprocess.check_call(['python', args.preprocess_script])
 
 if args.take_top:
     take_top = args.take_top
